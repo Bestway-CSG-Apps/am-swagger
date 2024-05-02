@@ -83,13 +83,8 @@ paths:
         schema:
           type: string
           example: OPEN
-      - name: x-app-data
+      - name: Authorization
         in: header
-        schema:
-          type: string
-          example: browser test
-      - in: header
-        name: Authorization
         schema:
           type: string
         required: true
