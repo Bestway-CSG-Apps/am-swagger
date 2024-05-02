@@ -48,6 +48,12 @@ paths:
       summary: Get Franchises
       description: Get Franchises
       operationId: getFranchises
+      parameters:
+        - in: header
+          name: Authorization
+          schema:
+            type: string
+          required: true
       responses:
         '200':
           description: ''
