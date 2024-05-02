@@ -91,7 +91,7 @@ paths:
       responses:
         '200':
           description: ''
-  /enjoy-order-public/orders/4769511/basket/:
+  /enjoy-order-public/orders/{orderId}/basket/:
     get:
       summary: Get Order Detail
       description: Get Order Detail
@@ -105,7 +105,7 @@ paths:
       responses:
         '200':
           description: ''
-  /enjoy-order-public/orders/4769511/summary/:
+  /enjoy-order-public/orders/{orderId}/summary/:
     get:
       summary: Get Order summary
       description: Get Order summary
@@ -132,7 +132,7 @@ paths:
               properties:
                 currentFranchise:
                   type: string
-                  example: '22607'
+                  example: '{franchiseId}'
                 page:
                   type: string
                   example: '1'
@@ -142,7 +142,7 @@ paths:
             examples:
               Get News:
                 value:
-                  currentFranchise: '22607'
+                  currentFranchise: '{franchiseId}'
                   page: '1'
                   pageSize: '2'
       responses:
