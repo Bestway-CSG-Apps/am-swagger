@@ -88,6 +88,11 @@ paths:
         schema:
           type: string
           example: browser test
+      - in: header
+        name: Authorization
+        schema:
+          type: string
+        required: true
       responses:
         '200':
           description: ''
