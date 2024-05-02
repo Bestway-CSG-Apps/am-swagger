@@ -1,0 +1,349 @@
+openapi: 3.0.3
+info:
+  title: ActivMobile
+  version: 1.0.0
+  contact: {}
+servers:
+- url: https://auth.costcutter.com
+- url: https://franchise-details-public.costcutter.com
+- url: https://enjoy-order-public.costcutter.com
+- url: https://activhub.costcutter.com
+- url: https://product-search-public.costcutter.com
+paths:
+  /cc-cas/oauth2.0/accessToken:
+    post:
+      summary: Login
+      description: Login
+      operationId: login
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                client_id:
+                  type: string
+                  example: mobile
+                grant_type:
+                  type: string
+                  example: password
+                password:
+                  type: string
+                  example: '****'
+                username:
+                  type: string
+                  example: username
+            examples:
+              Login:
+                value:
+                  client_id: mobile
+                  grant_type: password
+                  password: '****'
+                  username: username
+      responses:
+        '200':
+          description: ''
+  /franchise-details-public/api/getFranchises/1:
+    get:
+      summary: Get Franchises
+      description: Get Franchises
+      operationId: getFranchises
+      responses:
+        '200':
+          description: ''
+  /enjoy-order-public/search/orders/:
+    get:
+      summary: Get Orders - Open
+      description: Get Orders - Open
+      operationId: getOrdersOpen
+      parameters:
+      - name: franchise
+        in: query
+        schema:
+          type: string
+          example: '22607'
+      - name: fromDate
+        in: query
+        schema:
+          type: string
+          example: 2024-02-19
+      - name: toDate
+        in: query
+        schema:
+          type: string
+          example: 2024-03-19
+      - name: status
+        in: query
+        schema:
+          type: string
+          example: OPEN
+      - name: x-app-data
+        in: header
+        schema:
+          type: string
+          example: browser test
+      responses:
+        '200':
+          description: ''
+  /enjoy-order-public/orders/4769511/basket/:
+    get:
+      summary: Get Order Detail
+      description: Get Order Detail
+      operationId: getOrderDetail
+      parameters:
+      - name: x-app-data
+        in: header
+        schema:
+          type: string
+          example: browser test
+      responses:
+        '200':
+          description: ''
+  /enjoy-order-public/orders/4769511/summary/:
+    get:
+      summary: Get Order summary
+      description: Get Order summary
+      operationId: getOrderSummary
+      parameters:
+      - name: x-app-data
+        in: header
+        schema:
+          type: string
+          example: browser test
+      responses:
+        '200':
+          description: ''
+  /app/api/news:
+    post:
+      summary: Get News
+      description: Get News
+      operationId: getNews
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                currentFranchise:
+                  type: string
+                  example: '22607'
+                page:
+                  type: string
+                  example: '1'
+                pageSize:
+                  type: string
+                  example: '2'
+            examples:
+              Get News:
+                value:
+                  currentFranchise: '22607'
+                  page: '1'
+                  pageSize: '2'
+      responses:
+        '200':
+          description: ''
+  /app/api/faq:
+    post:
+      summary: GetFaqs
+      description: GetFaqs
+      operationId: getfaqs
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                currentFranchise:
+                  type: object
+                  properties:
+                    accountName:
+                      type: string
+                      example: EBOR FOOD HEAD OFFICE
+                    address1:
+                      type: string
+                      example: 29 YORK STREET
+                    areaManagerName:
+                      type: string
+                      example: DAWN WHITWORTH
+                    areaManagerPhoneNumber:
+                      nullable: true
+                      example: null
+                    bulletinType:
+                      type: string
+                      example: A
+                    closed:
+                      type: boolean
+                      example: false
+                    coopOBR:
+                      type: boolean
+                      example: false
+                    costBand:
+                      nullable: true
+                      example: null
+                    cpos:
+                      type: boolean
+                      example: true
+                    deliveryCountry:
+                      type: string
+                      example: ENGLAND
+                    deliveryDays:
+                      nullable: true
+                      example: null
+                    depot:
+                      type: string
+                      example: COVENTRY
+                    fascia:
+                      type: string
+                      example: CC
+                    franchiseCode:
+                      type: string
+                      example: '22607'
+                    latestInvoiceAmount:
+                      type: number
+                      example: 17.39
+                    latestInvoiceDate:
+                      type: number
+                      example: 1711411200000
+                    latestInvoiceWeek:
+                      type: number
+                      example: 38
+                    licenced:
+                      type: boolean
+                      example: false
+                    name:
+                      type: string
+                      example: COSTCUTTER
+                    nisaOBR:
+                      type: boolean
+                      example: false
+                    onHold:
+                      type: boolean
+                      example: false
+                    openDate:
+                      type: number
+                      example: 757641600000
+                    pdOffset:
+                      nullable: true
+                      example: null
+                    pricingGroup:
+                      type: number
+                      example: 0
+                    regionCode:
+                      type: string
+                      example: EBOR
+                    rspBand:
+                      nullable: true
+                      example: null
+                    suppliers:
+                      type: array
+                      items:
+                        type: string
+                        example: NISA
+                      example:
+                      - NISA
+                      - NISAC
+                      - NISAF
+                page:
+                  type: number
+                  example: 1
+                pageSize:
+                  type: number
+                  example: 2
+            examples:
+              GetFaqs:
+                value:
+                  currentFranchise:
+                    accountName: EBOR FOOD HEAD OFFICE
+                    address1: 29 YORK STREET
+                    areaManagerName: DAWN WHITWORTH
+                    areaManagerPhoneNumber: null
+                    bulletinType: A
+                    closed: false
+                    coopOBR: false
+                    costBand: null
+                    cpos: true
+                    deliveryCountry: ENGLAND
+                    deliveryDays: null
+                    depot: COVENTRY
+                    fascia: CC
+                    franchiseCode: '22607'
+                    latestInvoiceAmount: 17.39
+                    latestInvoiceDate: 1711411200000
+                    latestInvoiceWeek: 38
+                    licenced: false
+                    name: COSTCUTTER
+                    nisaOBR: false
+                    onHold: false
+                    openDate: 757641600000
+                    pdOffset: null
+                    pricingGroup: 0
+                    regionCode: EBOR
+                    rspBand: null
+                    suppliers:
+                    - NISA
+                    - NISAC
+                    - NISAF
+                  page: 1
+                  pageSize: 2
+      responses:
+        '200':
+          description: ''
+  /product-search-public/activoc/products/22607:
+    post:
+      summary: Search Product - Product Code
+      description: Search Product - Product Code
+      operationId: searchProductProductCode
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                coopOwnBrandFilter:
+                  type: boolean
+                  example: false
+                costPromotions:
+                  type: boolean
+                  example: false
+                nisaOwnBrandFilter:
+                  type: boolean
+                  example: false
+                query:
+                  type: string
+                  example: spam
+                rangeStatus:
+                  type: array
+                  items:
+                    type: string
+                    example: ACTIVE
+                  example:
+                  - ACTIVE
+            examples:
+              Search Product - Product Barcode:
+                value:
+                  coopOwnBrandFilter: false
+                  costPromotions: false
+                  nisaOwnBrandFilter: false
+                  query: '0037600104029'
+                  rangeStatus:
+                  - ACTIVE
+              Search Product - Product Code:
+                value:
+                  coopOwnBrandFilter: false
+                  nisaOwnBrandFilter: false
+                  query: '55307'
+                  rangeStatus:
+                  - ACTIVE
+              Search Product - Product Keyword:
+                value:
+                  coopOwnBrandFilter: false
+                  costPromotions: false
+                  nisaOwnBrandFilter: false
+                  query: spam
+                  rangeStatus:
+                  - ACTIVE
+      responses:
+        '200':
+          description: ''
+tags: []
+
